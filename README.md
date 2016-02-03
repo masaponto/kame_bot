@@ -1,4 +1,4 @@
-# kamebot
+# kamebot :turtle:
 - python3
 - printで出力したものをファイルとしてSlackに投げる 
 
