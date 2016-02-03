@@ -4,12 +4,12 @@
 
 ## How to install 
 ```
-pip install git+
+pip install git+https://github.com/masaponto/kame_bot
 ```
 
 ## example
 
-```python:example.py
+```python
 bot = KameBot('<your-slack-api-token-goes-here>',channel='#random')
 
 @bot.toslack
