@@ -12,9 +12,9 @@ pip install git+https://github.com/masaponto/kame_bot
 Write hoge.py as follows
 
 ```python
-from kame_bot import KameBot
+from kamebot import Kamebot
 
-bot = KameBot('<your-slack-api-token-goes-here>',channel='#random')
+bot = Kamebot('<your-slack-api-token-goes-here>',channel='#random')
 
 @bot.toslack
 def hoge():
