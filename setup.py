@@ -8,6 +8,6 @@ setup(
     author_email='masaponto@gmail.com',
     url='masaponto.github.io',
     install_requires=['slacker'],
-    py_modules = ["kame_bot"],
+    py_modules = ["kamebot"],
     package_dir = {'': 'src'}
 )

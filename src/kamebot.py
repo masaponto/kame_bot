@@ -4,7 +4,7 @@
 import sys
 from slacker import Slacker
 
-class KameBot:
+class Kamebot:
     def __init__(self, token, channel):
         self.slack = Slacker(token)
         self.channel = channel
@@ -24,7 +24,7 @@ class KameBot:
         return wrapper
 
 
-bot = KameBot('<your-slack-api-token-goes-here>',channel='#random')
+bot = Kamebot('<your-slack-api-token-goes-here>',channel='#random')
 
 @bot.toslack
 def hoge():
