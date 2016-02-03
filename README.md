@@ -4,7 +4,7 @@
 
 ## How to install 
 ```
-pip install git+https://github.com/masaponto/kame_bot
+pip install git+https://github.com/masaponto/kamebot
 ```
 
 ## Examples
@@ -14,7 +14,7 @@ Write hoge.py as follows
 ```python
 from kamebot import Kamebot
 
-bot = Kamebot('<your-slack-api-token-goes-here>',channel='#random')
+bot = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
 
 @bot.toslack
 def hoge():
