@@ -1,5 +1,6 @@
 # kamebot :turtle:
 - Python3
+- using [slacker](https://github.com/os/slacker)
 - printで出力したものをSlackに投げる 
 
 ## How to install 
