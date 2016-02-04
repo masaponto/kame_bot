@@ -54,21 +54,22 @@ class Kamebot:
             f = io.StringIO('')
             sys.stdout = f
 
-            self.run_func(func, *args, **kwargs)
-
-            sys.stdout = sys.__stdout__
-            f.seek(0)
-
             if self.title:
                 print(self.title)
             if self.initial_comment:
                 print(self.initial_comment)
+
+            self.run_func(func, *args, **kwargs)
+
+            sys.stdout = sys.__stdout__
+            f.seek(0)
 
             self.slack.chat.post_message(self.channel, f.read(), as_user=True)
             f.close()
         return wrapper
 
 bot = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
+
 
 @bot.send_comment
 def hoge():
