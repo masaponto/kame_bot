@@ -21,7 +21,6 @@ kame = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
 def hoge():
     print('this is a test')
 
-
 # send print string as a file
 @kame.send_file
 def fuga():
@@ -30,6 +29,7 @@ def fuga():
 
 if __name__ == "__main__":
     hoge()
+    fuga()
 ```
 
 then Run (out.txt is name of file)
