@@ -28,7 +28,7 @@ class Kamebot:
             if self.title is None:
                 title = fname
 
-            sys.stdout = open(fname, 'w')
+            sys.stdout = open(fname, 'a')
 
             try:
                 func(*args, **kwargs)
@@ -40,13 +40,12 @@ class Kamebot:
             sys.stdout.close()
             sys.stdout = sys.__stdout__
             self.slack.files.upload(
-                fname, filename=fname, channels=self.channel, title=self.title, initial_comment=self.initial_comment, filetype=self.filetype)
+                fname, filename=fname, channels=self.channel, title=self.title,
+                initial_comment=self.initial_comment, filetype=self.filetype)
         return wrapper
 
 
 bot = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
-
-
 
 @bot.toslack
 def hoge():
