@@ -1,6 +1,6 @@
 # kamebot :turtle:
-- python3
-- printで出力したものをファイルとしてSlackに投げる 
+- Python3
+- printで出力したものをSlackに投げる 
 
 ## How to install 
 ```
@@ -14,18 +14,25 @@ Write hoge.py as follows
 ```python
 from kamebot import Kamebot
 
-bot = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
+kame = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
 
-@bot.toslack
+# send print string as a comment
+@kame.send_comment
 def hoge():
     print('this is a test')
+
+
+# send print string as a file
+@kame.send_file
+def fuga():
+    print('I am a pen')
+
 
 if __name__ == "__main__":
     hoge()
 ```
 
-then Run
-
+then Run (out.txt is name of file)
 ```
-python hoge.py out.txt
+$ python hoge.py out.txt
 ```
