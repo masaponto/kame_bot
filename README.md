@@ -6,11 +6,11 @@
 
 
 ## How to install 
-1.   Install via pip  
+1. Install via pip  
 ```
 pip install git+https://github.com/masaponto/kamebot  
 ```
-1.  Add KAMEBOT_TOKEN to your shell  
+2. Add KAMEBOT_TOKEN to your shell  
 ```
 $ echo 'export KAMEBOT_TOKEN = <your-slack-api-token-goes-here>' >> ~/.zshenv
 ```
