@@ -17,7 +17,7 @@
 
 ## Examples
 
-Write hoge.py as follows
+Write example.py as follows  
 
 ```python
 from kamebot import Kamebot
@@ -26,21 +26,35 @@ kame = Kamebot(channel='#random')
 
 # send print string as a comment
 @kame.comment
-def hoge():
+def main():
     print('this is a test')
+
+if __name__ == "__main__":
+    main()
+```
+
+and Run 
+```
+$ python example.py
+```
+
+if you want send as a file  
+
+```python
+from kamebot import Kamebot
+
+kame = Kamebot(channel='#random')
 
 # send print string as a file
 @kame.afile
-def fuga():
-    print('I am a pen')
-
+def main():
+    print('this is a test')
 
 if __name__ == "__main__":
-    hoge()
-    fuga()
+    main()
 ```
 
-then Run (out.txt is name of file)
+then Run  
 ```
-$ python hoge.py out.txt
+$ python example.py your_output_file.txt
 ```
