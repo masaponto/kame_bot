@@ -8,7 +8,7 @@
 ## How to install 
 1. Install via pip  
    ```
-   pip install git+https://github.com/masaponto/kamebot  
+   $ pip install git+https://github.com/masaponto/kamebot  
    ```
 2. Add KAMEBOT_TOKEN to your shell  
    ```
