@@ -3,9 +3,17 @@
 - using [slacker](https://github.com/os/slacker)
 - printで出力したものをSlackに投げる 
 
+
+
 ## How to install 
+1.   Install via pip  
 ```
-pip install git+https://github.com/masaponto/kamebot
+pip install git+https://github.com/masaponto/kamebot  
+```
+
+2.  Add KAMEBOT_TOKEN to your shell  
+```
+$ echo 'export KAMEBOT_TOKEN = <your-slack-api-token-goes-here>' >> ~/.zshenv
 ```
 
 ## Examples
@@ -15,15 +23,15 @@ Write hoge.py as follows
 ```python
 from kamebot import Kamebot
 
-kame = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
+kame = Kamebot('channel='#random')
 
 # send print string as a comment
-@kame.send_comment
+@kame.comment
 def hoge():
     print('this is a test')
 
 # send print string as a file
-@kame.send_file
+@kame.afile
 def fuga():
     print('I am a pen')
 

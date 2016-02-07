@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import os
 import traceback
 import functools
 
@@ -10,7 +11,15 @@ from slacker import Slacker
 
 class Kamebot:
 
-    def __init__(self, token, channel='#random', title=None, initial_comment=None, filetype=None):
+    def __init__(self, token='', channel='#random', title=None, initial_comment=None, filetype=None):
+
+        if token == '':
+            if os.environ.get("KAMEBOT_TOKEN") == '':
+                print('environment vars KAMEBOT_TOKEN not found')
+                sys.exit()
+            else:
+                token = os.environ.get("KAMEBOT_TOKEN")
+
         self.slack = Slacker(token)
         self.channel = channel
         self.title = title
@@ -25,7 +34,7 @@ class Kamebot:
             print(traceback.format_exc())
             print('--------------------------------------------')
 
-    def send_file(self, func):
+    def afile(self, func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             param = sys.argv
@@ -47,7 +56,7 @@ class Kamebot:
 
         return wrapper
 
-    def send_comment(self, func):
+    def comment(self, func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             import io
@@ -68,14 +77,11 @@ class Kamebot:
             f.close()
         return wrapper
 
-bot = Kamebot('<your-slack-api-token-goes-here>', channel='#random')
+bot = Kamebot(channel='#random')
 
-
-@bot.send_comment
+@bot.comment
 def hoge():
     print('this is a test')
-    print('this is a test')
-    i = 1 + 'a'
 
 
 if __name__ == "__main__":
