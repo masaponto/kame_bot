@@ -10,8 +10,7 @@
 ```
 pip install git+https://github.com/masaponto/kamebot  
 ```
-
-2.  Add KAMEBOT_TOKEN to your shell  
+1.  Add KAMEBOT_TOKEN to your shell  
 ```
 $ echo 'export KAMEBOT_TOKEN = <your-slack-api-token-goes-here>' >> ~/.zshenv
 ```
@@ -23,7 +22,7 @@ Write hoge.py as follows
 ```python
 from kamebot import Kamebot
 
-kame = Kamebot('channel='#random')
+kame = Kamebot(channel='#random')
 
 # send print string as a comment
 @kame.comment
