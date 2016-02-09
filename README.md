@@ -12,7 +12,7 @@
    ```
 2. Add KAMEBOT_TOKEN to your shell  
    ```
-   $ echo 'export KAMEBOT_TOKEN = <your-slack-api-token-goes-here>' >> ~/.zshenv
+   $ echo 'export KAMEBOT_TOKEN=<your-slack-api-token-goes-here>' >> ~/.zshenv
    ```
 
 ## Examples
