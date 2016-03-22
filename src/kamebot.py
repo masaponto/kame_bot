@@ -38,10 +38,10 @@ class Kamebot:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             param = sys.argv
-            assert(len(param) is 2)
+            assert(len(param) == 2)
             fname = param[1]
 
-            if self.title is None:
+            if self.title == None:
                 title = fname
 
             sys.stdout = open(fname, 'a')
