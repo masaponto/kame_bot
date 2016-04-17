@@ -13,7 +13,7 @@
 2. Add KAMEBOT_TOKEN to your shell  
    ```
    $ echo 'export KAMEBOT_TOKEN=<your-slack-api-token-goes-here>' >> ~/.zshenv
-   ```
+   ```  
    slack api token is from [bots](https://slack.com/apps/A0F7YS25R-bots)
 
 ## Examples
