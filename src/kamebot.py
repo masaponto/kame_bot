@@ -42,9 +42,9 @@ class Kamebot:
 
             p = argparse.ArgumentParser()
             p.add_argument('-of', '--outfile', type=str, help='out put file name',
-                           default=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S.txt'))
+                           default=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S.txt'), nargs='?')
             p.add_argument('-cm', '--comment', type=str,
-                           help='comment', default=None)
+                           help='comment', default=None, nargs='?')
 
             option_args = p.parse_args()
             fname = option_args.outfile
@@ -85,7 +85,7 @@ class Kamebot:
         return wrapper
 
 bot = Kamebot(channel='#random')
-@bot.comment
+@bot.afile
 def hoge():
     print('this is a test')
 
