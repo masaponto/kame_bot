@@ -2,7 +2,7 @@
 - Python3
 - using [slacker](https://github.com/os/slacker)
 - printで出力したものをSlackに投げる 
-- 関数内でargparse使っていた場合,そのargpaseは機能できない問題がある
+- kamebot自体でargparseを使っているので、argparseを使っている関数をデコレートできない問題がある。
 
 
 ## How to install 
