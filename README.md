@@ -58,3 +58,12 @@ then Run
 ```
 $ python example.py -of=your_output_file.txt -cm comment
 ```
+
+
+## Options
+- \-test : if you want to use stdio for test run
+
+##### only for @kame.afile  
+
+- \-cm, \--comment : initial comment for upload file
+- \-of, \--outfile : output file name

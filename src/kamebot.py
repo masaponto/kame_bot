@@ -46,11 +46,17 @@ class Kamebot:
             p.add_argument('-of', '--outfile', type=str, help='out put file name',
                            default=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S.txt'), nargs='?')
             p.add_argument('-cm', '--comment', type=str,
-                           help='comment', default=None, nargs='?')
+                           help='comment for upload file', default=None, nargs='?')
+
+            p.add_argument('-test', help='for test runnnig. stdout without slack', action='store_true')
 
             option_args = p.parse_known_args()[0]
-            fname = option_args.outfile
 
+            if option_args.test:
+                self.run_func(func, *args, **kwargs)
+                return wrapper
+
+            fname = option_args.outfile
             title = self.title if self.title == None else fname
             comment = self.initial_comment if option_args.comment == None else option_args.comment
 
@@ -68,6 +74,15 @@ class Kamebot:
     def comment(self, func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
+
+            p = argparse.ArgumentParser()
+            p.add_argument('-test', help='test', action='store_true')
+            option_args = p.parse_known_args()[0]
+
+            if option_args.test:
+                self.run_func(func, *args, **kwargs)
+                return wrapper
+
             import io
             f = io.StringIO('')
             sys.stdout = f
@@ -90,6 +105,7 @@ bot = Kamebot(channel='#random')
 @bot.afile
 def hoge():
     print('this is a test')
+    print('aaaaaaaaaaaaaaaaaaaa')
 
 
 if __name__ == "__main__":
