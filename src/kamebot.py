@@ -13,7 +13,7 @@ from slacker import Slacker
 
 class Kamebot:
 
-    def __init__(self, token='', channel='#random', title=None, initial_comment=None, filetype=None):
+    def __init__(self, token='', channel='#random', title=None, initial_comment=None, filetype=None, error_comment=''):
 
         if token == '':
             if os.environ.get("KAMEBOT_TOKEN") == '':
@@ -27,11 +27,13 @@ class Kamebot:
         self.title = title
         self.initial_comment = initial_comment
         self.filetype = filetype
+        self.error_comment = error_comment
 
     def run_func(self, func, *args, **kwargs):
         try:
             func(*args, **kwargs)
         except:
+            print(self.error_comment)
             print('--------------------------------------------')
             print(traceback.format_exc())
             print('--------------------------------------------')
