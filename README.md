@@ -23,7 +23,7 @@ Write example.py as follows
 ```python
 from kamebot import Kamebot
 
-kame = Kamebot(channel='#random')
+kame = Kamebot(channel='#random', error_comment='Yabai!!!!!!!')
 
 # send print string as a comment
 @kame.comment
@@ -44,7 +44,7 @@ if you want send as a file
 ```python
 from kamebot import Kamebot
 
-kame = Kamebot(channel='#random')
+kame = Kamebot(channel='#random', error_comment='Yabai!!!!!!!')
 
 # send print string as a file
 @kame.afile
