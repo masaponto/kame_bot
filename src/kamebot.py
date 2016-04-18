@@ -48,7 +48,7 @@ class Kamebot:
             p.add_argument('-cm', '--comment', type=str,
                            help='comment', default=None, nargs='?')
 
-            option_args = p.parse_args()
+            option_args = p.parse_known_args()[0]
             fname = option_args.outfile
 
             title = self.title if self.title == None else fname
