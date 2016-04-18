@@ -67,8 +67,8 @@ class Kamebot:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             import io
-            sys.stdout = f
             f = io.StringIO('')
+            sys.stdout = f
 
             if self.title:
                 print(self.title)
@@ -85,8 +85,7 @@ class Kamebot:
         return wrapper
 
 bot = Kamebot(channel='#random')
-
-@bot.afile
+@bot.comment
 def hoge():
     print('this is a test')
 
