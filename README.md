@@ -2,7 +2,7 @@
 - Python3
 - using [slacker](https://github.com/os/slacker)
 - printで出力したものをSlackに投げる 
-
+- 関数内でargparse使っていた場合,そのargpaseは機能できない問題がある
 
 
 ## How to install 
@@ -57,5 +57,5 @@ if __name__ == "__main__":
 
 then Run  
 ```
-$ python example.py your_output_file.txt
+$ python example.py -of=your_output_file.txt -cm comment
 ```
