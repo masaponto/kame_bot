@@ -5,6 +5,8 @@ import sys
 import os
 import traceback
 import functools
+import argparse
+import datetime
 
 from slacker import Slacker
 
@@ -37,22 +39,27 @@ class Kamebot:
     def afile(self, func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            param = sys.argv
-            assert(len(param) == 2)
-            fname = param[1]
 
-            if self.title == None:
-                title = fname
+            p = argparse.ArgumentParser()
+            p.add_argument('-of', '--outfile', type=str, help='out put file name',
+                           default=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S.txt'))
+            p.add_argument('-cm', '--comment', type=str,
+                           help='comment', default=None)
+
+            option_args = p.parse_args()
+            fname = option_args.outfile
+
+            title = self.title if self.title == None else fname
+            comment = self.initial_comment if option_args.comment == None else option_args.comment
 
             sys.stdout = open(fname, 'a')
-
             self.run_func(func, *args, **kwargs)
-
             sys.stdout.close()
             sys.stdout = sys.__stdout__
+
             self.slack.files.upload(
-                fname, filename=fname, channels=self.channel, title=self.title,
-                initial_comment=self.initial_comment, filetype=self.filetype)
+                fname, filename=fname, channels=self.channel, title=title,
+                initial_comment=comment, filetype=self.filetype)
 
         return wrapper
 
@@ -60,8 +67,8 @@ class Kamebot:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             import io
-            f = io.StringIO('')
             sys.stdout = f
+            f = io.StringIO('')
 
             if self.title:
                 print(self.title)
@@ -79,7 +86,7 @@ class Kamebot:
 
 bot = Kamebot(channel='#random')
 
-@bot.comment
+@bot.afile
 def hoge():
     print('this is a test')
 
