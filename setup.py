@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='kamebot',
-    version='1.1',
+    version='1.2',
     description='make file with stdio and send it to slack',
     author='masaponto',
     author_email='masaponto@gmail.com',
