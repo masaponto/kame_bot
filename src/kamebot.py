@@ -61,14 +61,20 @@ class Kamebot:
             comment = self.initial_comment if option_args.comment == None else option_args.comment
 
             sys.stdout = open(fname, 'a')
-            self.run_func(func, *args, **kwargs)
+            self.run_func(func, *args, **kwargs)            
             sys.stdout.close()
             sys.stdout = sys.__stdout__
 
-            self.slack.files.upload(
-                fname, filename=fname, channels=self.channel, title=title,
-                initial_comment=comment, filetype=self.filetype)
+            with open(fname, 'r') as f:
+                content_str = f.read()
 
+            if content_str == "":
+                pass
+            else:                
+                self.slack.files.upload(
+                    fname, filename=fname, channels=self.channel, title=title,
+                    initial_comment=comment, filetype=self.filetype)
+                         
         return wrapper
 
     def comment(self, func):
@@ -97,13 +103,20 @@ class Kamebot:
             sys.stdout = sys.__stdout__
             f.seek(0)
 
-            self.slack.chat.post_message(self.channel, f.read(), as_user=True)
+            comment_str = f.read()
             f.close()
+            
+            if comment_str == "":
+                pass
+            else:
+                self.slack.chat.post_message(self.channel, comment_str, as_user=True)
+          
         return wrapper
 
 bot = Kamebot(channel='#random')
-@bot.afile
+@bot.comment
 def hoge():
+    i = 2 + 3
     print('this is a test')
     print('aaaaaaaaaaaaaaaaaaaa')
 
