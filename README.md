@@ -67,3 +67,7 @@ $ python example.py -of=your_output_file.txt -cm comment
 
 - \-cm, \--comment : initial comment for upload file
 - \-of, \--outfile : output file name
+
+
+## License
+MIT
